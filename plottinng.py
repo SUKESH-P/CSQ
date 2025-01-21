@@ -4,9 +4,9 @@ import seaborn as sns
 import plotly.express as px
 
 # Load the data (assuming the data is in CSV format)
-test_matches = pd.read_csv('Test_matches.csv')
-odi_matches = pd.read_csv('ODI_matches.csv')
-t20_matches = pd.read_csv('T20_matches.csv')
+test_matches = pd.read_csv('C:/Users/Sukkiiii/Desktop/ME_DATA/transformed/Test_matches.csv')
+odi_matches = pd.read_csv('C:/Users/Sukkiiii/Desktop/ME_DATA/transformed/ODI_matches.csv')
+t20_matches = pd.read_csv('C:/Users/Sukkiiii/Desktop/ME_DATA/transformed/T20_matches.csv')
 
 # General Overview of the Data
 print(test_matches.info())
@@ -65,17 +65,6 @@ plt.xlabel('Teams')
 plt.ylabel('Total Runs')
 plt.show()
 
-# 6. Runs Scored by Players Who Did Not Get Dismissed in ODI Matches
-odi_no_dismissal = odi_matches[odi_matches['player_dismissed'].isnull()]
-odi_no_dismissal = odi_no_dismissal.groupby('batter')['runs_batter'].sum().reset_index()
-
-plt.figure(figsize=(10,6))
-sns.barplot(data=odi_no_dismissal, x='batter', y='runs_batter', palette='YlGnBu')
-plt.title('Runs Scored by Players Who Did Not Get Dismissed in ODI Matches')
-plt.xticks(rotation=45)
-plt.xlabel('Batter')
-plt.ylabel('Runs Scored')
-plt.show()
 
 # 7. Line Plot for Total Runs Scored by Each Team Over Time
 test_matches['date'] = pd.to_datetime(test_matches['date'])
